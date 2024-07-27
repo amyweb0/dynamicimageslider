@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.main .list {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.main .list .item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.main .list .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main .list .item .content {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  padding-right: 10%;
+  box-sizing: border-box;
+  color: #fff;
+  text-shadow: 0 5px 10px #0004;
+}
+
+.main .list .item .content .title {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.main .list .item .content .description {
+  font-size: 1rem;
+}
+
+.thumbnail {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.thumbnail .item {
+  width: 80px;
+  height: 120px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.thumbnail .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.prevnext {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.prevnext button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.prevnext button:hover {
+  background-color: white;
+  color: #000;
+}
+
+@media (min-width: 600px) {
+  .main .list .item .content .title {
+    font-size: 2.5rem;
+  }
+
+  .main .list .item .content .description {
+    font-size: 1.2rem;
+  }
+
+  .thumbnail .item {
+    width: 100px;
+    height: 150px;
+  }
+
+  .prevnext {
+    bottom: 35%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main .list .item .content .title {
+    font-size: 3rem;
+  }
+
+  .main .list .item .content .description {
+    font-size: 1.5rem;
+  }
+
+  .thumbnail .item {
+    width: 120px;
+    height: 180px;
+  }
+
+  .prevnext {
+    bottom: 30%;
+  }
+}
+
+/* Animation styles remain unchanged */
+.main .list .item:nth-child(1) {
+  z-index: 1;
+}
+
+.main .list .item:nth-child(1) .title,
+.main .list .item:nth-child(1) .description,
+.main .list .item:nth-child(1) .button {
+  transform: translateX(50px);
+  filter: blur(20px);
+  opacity: 0;
+  animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+  to {
+    transform: translateX(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.main .list .item:nth-child(1) .title {
+  animation-delay: 0.4s;
+}
+
+.main .list .item:nth-child(1) .description {
+  animation-delay: 0.6s;
+}
+
+.main .list .item:nth-child(1) .button {
+  animation-delay: 0.8s;
+}
+
+.main .list .item:nth-child(1) img {
+  width: 150px;
+  height: 220px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  border-radius: 30px;
+  animation: showImage 0.5s linear 1 forwards;
+}
+
+@keyframes showImage {
+  to {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+.main .next .thumbnail .item:nth-child(1) {
+  overflow: hidden;
+  animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+.main .next .thumbnail .item img {
+  z-index: 100;
+}
+
+@keyframes showThumbnail {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+}
